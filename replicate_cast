@@ -1,0 +1,22 @@
+---Это через Replicate ( повторяет строку кол-во раз равное интовому значению)
+
+DECLARE @L int = 5;
+
+DECLARE @Line nvarchar(60);
+SET @Line = REPLICATE('=', @L);
+
+SELECT @Line as Horizont_line;
+
+--- Это через CAST, хз зачем, два варианта лучше одного
+
+DECLARE @L int = 5;
+DECLARE @Line varchar(MAX) = '';
+
+DECLARE @Counter INT = 1;
+WHILE @Counter <= @L
+BEGIN
+    SET @Line = @Line + CAST('=' as varchar(1));
+    SET @Counter = @Counter + 1;
+END
+
+SELECT @Line as line_horizont;
